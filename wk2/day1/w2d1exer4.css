@@ -1,0 +1,132 @@
+body {
+  margin: 0;
+}
+
+.slideshow-container {
+  height: 600px;
+  width: 100%;
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid green;
+}
+
+.mySlides {
+  display: block;
+  float: left;
+  position: absolute;
+}
+
+#current{
+  transform: translateX(0%);
+  -webkit-animation-name: slide;
+  -webkit-animation-duration: 5s;
+  animation-name: slide;
+  animation-duration: 5s;
+  z-index: 2;
+  transition-timing-function: ease-in-out;
+}
+
+#next {
+  transform: translateX(100%);
+  -webkit-animation-name: slidenext;
+  -webkit-animation-duration: 5s;
+  animation-name: slidenext;
+  animation-duration: 5s;
+  z-index: 2;
+  transition-timing-function: ease-in-out;
+
+}
+
+#nextnext{
+  transform: translateX(200%);
+  -webkit-animation-name: slidenextnext;
+  -webkit-animation-duration: 5s;
+  animation-name: slidenextnext;
+  animation-duration: 5s;
+  z-index: 2;
+  transition-timing-function: ease-in-out;
+}
+
+#previous {
+  transform: translateX(-100%);
+  -webkit-animation-name: slideprev;
+  -webkit-animation-duration: 5s;
+  animation-name: slideprev;
+  animation-duration: 5s;
+  z-index: 1;
+  transition-timing-function: ease-in-out;
+}
+
+@-webkit-keyframes slide {
+  0% {transform: : translateX(0)}
+  20% {transform: translateX(-100%)}
+  100% {transform: translateX(-100%)}
+}
+
+@keyframes slide {
+  0% {transform: : translateX(0)}
+  20% {transform: translateX(-100%)}
+  100% {transform: translateX(-100%)}
+
+}
+
+@-webkit-keyframes slidenext {
+  0% {transform: : translateX(100%)}
+  20% {transform: translateX(0%)}
+  100% {transform: translateX(0%)}
+
+}
+
+@keyframes slidenext {
+  0% {transform: : translateX(100%)}
+  20% {transform: translateX(0%)}
+  100% {transform: translateX(0%)}
+
+}
+
+@-webkit-keyframes slidenextnext {
+  0% {transform: : translateX(200%)}
+  20% {transform: translateX(100%)}
+  100% {transform: translateX(100%)}
+}
+
+@keyframes slidenextnext {
+  0% {transform: : translateX(200%)}
+  20% {transform: translateX(100%)}
+  100% {transform: translateX(100%)}
+
+}
+
+@-webkit-keyframes slideprev {
+  0% {transform: : translateX(-100%)}
+  20% {transform: translateX(200%)}
+  100% {transform: translateX(200%)}
+
+}
+
+@keyframes slideprev {
+  0% {transform: : translateX(-100%)}
+  20% {transform: translateX(200%)}
+  100% {transform: translateX(200%)}
+}
+
+#dots {
+  z-index: 100;
+  position: absolute;
+  top: 90%;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.dot {
+  cursor:pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px white;
+  border: 2px solid white;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+  z-index: 100;
+}

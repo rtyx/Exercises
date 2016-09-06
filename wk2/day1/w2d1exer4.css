@@ -2,7 +2,7 @@ body {
   margin: 0;
 }
 
-.slideshow-container {
+#container {
   height: 600px;
   width: 100%;
   position: relative;
@@ -11,104 +11,81 @@ body {
   border: 1px solid green;
 }
 
-.mySlides {
+#kit1 {
+  background-image: url(cats/kit1.jpg);
   display: block;
   float: left;
   position: absolute;
+  background-size: cover;
+  border: 1px solid red;
+  width: 100%;
+  height: 100%;
 }
 
-#current{
+#kit2 {
+  background-image: url(cats/kit2.jpg);
+  display: block;
+  float: left;
+  position: absolute;
+  background-size: cover;
+  border: 1px solid red;
+  width: 100%;
+  height: 100%;
+}
+
+#kit3 {
+  background-image: url(cats/kit3.jpg);
+  display: block;
+  float: left;
+  position: absolute;
+  background-size: cover;
+  border: 1px solid red;
+  width: 100%;
+  height: 100%;
+}
+
+#kit4 {
+  background-image: url(cats/kit4.jpg);
+  display: block;
+  float: left;
+  position: absolute;
+  background-size: cover;
+  border: 1px solid red;
+  width: 100%;
+  height: 100%;
+}
+
+.out{
   transform: translateX(0%);
-  -webkit-animation-name: slide;
-  -webkit-animation-duration: 5s;
-  animation-name: slide;
-  animation-duration: 5s;
+  animation-name: slideout;
+  animation-duration: 2s;
   z-index: 2;
   transition-timing-function: ease-in-out;
 }
 
-#next {
+.in {
   transform: translateX(100%);
-  -webkit-animation-name: slidenext;
-  -webkit-animation-duration: 5s;
-  animation-name: slidenext;
-  animation-duration: 5s;
-  z-index: 2;
-  transition-timing-function: ease-in-out;
-
-}
-
-#nextnext{
-  transform: translateX(200%);
-  -webkit-animation-name: slidenextnext;
-  -webkit-animation-duration: 5s;
-  animation-name: slidenextnext;
-  animation-duration: 5s;
+  animation-name: slidein;
+  animation-duration: 2s;
   z-index: 2;
   transition-timing-function: ease-in-out;
 }
 
-#previous {
-  transform: translateX(-100%);
-  -webkit-animation-name: slideprev;
-  -webkit-animation-duration: 5s;
-  animation-name: slideprev;
-  animation-duration: 5s;
-  z-index: 1;
-  transition-timing-function: ease-in-out;
+.prepare {
+  transform: translateX(100%);
+  display: none;
 }
 
-@-webkit-keyframes slide {
+@keyframes slideout {
   0% {transform: : translateX(0)}
   20% {transform: translateX(-100%)}
   100% {transform: translateX(-100%)}
 }
 
-@keyframes slide {
-  0% {transform: : translateX(0)}
-  20% {transform: translateX(-100%)}
-  100% {transform: translateX(-100%)}
-
-}
-
-@-webkit-keyframes slidenext {
+@keyframes slidein {
   0% {transform: : translateX(100%)}
   20% {transform: translateX(0%)}
   100% {transform: translateX(0%)}
-
-}
-
-@keyframes slidenext {
-  0% {transform: : translateX(100%)}
-  20% {transform: translateX(0%)}
-  100% {transform: translateX(0%)}
-
-}
-
-@-webkit-keyframes slidenextnext {
-  0% {transform: : translateX(200%)}
-  20% {transform: translateX(100%)}
-  100% {transform: translateX(100%)}
-}
-
-@keyframes slidenextnext {
-  0% {transform: : translateX(200%)}
-  20% {transform: translateX(100%)}
-  100% {transform: translateX(100%)}
-
-}
-
-@-webkit-keyframes slideprev {
-  0% {transform: : translateX(-100%)}
-  20% {transform: translateX(200%)}
-  100% {transform: translateX(200%)}
-
-}
-
-@keyframes slideprev {
-  0% {transform: : translateX(-100%)}
-  20% {transform: translateX(200%)}
-  100% {transform: translateX(200%)}
 }
 
 #dots {

@@ -1,0 +1,7 @@
+    #box {
+      background-color: #00cc66;
+      width:100px;
+      height:100px;
+      position:absolute;
+      transform: translateX(-50%) translateY(-50%);
+    }

@@ -1,17 +1,30 @@
+var slides = document.getElementsByClassName("kit");
+console.log(slides)
+var dots = document.getElementsByClassName("dot");
+console.log(dots)
+var counter = 0;
+var i = 0
+var j = 1
+
+console.log(slides.length);
+
 function carousel() {
     setTimeout(function () {
-        var i;
-        if (i > slides.length) {
-            i = 0 
+        if (i >= slides.length - 1) {
+            i = 0
           } else {
             i++
           }
-        var slides = document.getElementsByClassName("kit");
-        var dots = document.getElementsByClassName("dot");
+        if (j >= slides.length - 1) {
+            j = 0
+          } else {
+            j++
+          }
+        console.log("i=" + i + ", j=" + j)
         slides[i].classList.remove("in");
         slides[i].classList.add("out");
-        slides[i+1].classList.remove("out");
-        slides[i+1].classList.add("prepare");
+        slides[j].classList.remove("out");
+        console.log(slides);
         carousel();
   }, 2000);
 }

@@ -1,32 +1,28 @@
-var slides = document.getElementsByClassName("kit");
-console.log(slides)
+var kitten = document.getElementsByClassName("kit");
 var dots = document.getElementsByClassName("dot");
-console.log(dots)
-var counter = 0;
-var i = 0
-var j = 1
+var katout = 0
+var katin = 1;
 
-console.log(slides.length);
+setTimeout(function moveout() {
+    kitten[katout].classList.remove("in");
+    kitten[katout].classList.add("out");
+    kitten[katin].classList.add("in");
+    kitten[katout].addEventListener("transitionend", function removeOut(e) {
+      this.removeEventListener("transitionend", removeOut);
+      console.log(e);
+      this.classList.remove("out");
+      setTimeout(moveout, 5000)
+    });
+    katout = katin;
+    katin = katout + 1 >= kitten.length ? 0 : katout + 1;
+}, 5000);
 
-function carousel() {
-    setTimeout(function () {
-        if (i >= slides.length - 1) {
-            i = 0
-          } else {
-            i++
-          }
-        if (j >= slides.length - 1) {
-            j = 0
-          } else {
-            j++
-          }
-        console.log("i=" + i + ", j=" + j)
-        slides[i].classList.remove("in");
-        slides[i].classList.add("out");
-        slides[j].classList.remove("out");
-        console.log(slides);
-        carousel();
-  }, 2000);
-}
 
-carousel();
+/*
+setInterval(function prepare() {
+    console.log(kitten[0].classList)
+    console.log(kitten[1].classList)
+    console.log(kitten[2].classList)
+    console.log(kitten[3].classList)
+}, 5000);
+*/

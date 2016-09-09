@@ -41,29 +41,16 @@ body {
 
 .out{
   transform: translateX(-100%);
-  transition-duration: 5s;
+  transition-duration: 1s;
   z-index: 2;
-  transition-timing-function: ease-in-out;
+  transition-timing-function: cubic-bezier(0.3,0.1,0.25,1);
 }
 
 .in {
   transform: translateX(0);
-  transition-duration: 5s;
+  transition-duration: 1s;
   z-index: 2;
-  transition-timing-function: ease-in-out;
-}
-
-
-@keyframes slideout {
-  0% {transform: : translateX(0)}
-  20% {transform: translateX(-100%)}
-  100% {transform: translateX(-100%)}
-}
-
-@keyframes slidein {
-  0% {transform: : translateX(100%)}
-  20% {transform: translateX(0%)}
-  100% {transform: translateX(0%)}
+  transition-timing-function: cubic-bezier(0.3,0.1,0.25,1);;
 }
 
 #dots {

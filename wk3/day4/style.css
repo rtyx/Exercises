@@ -1,0 +1,72 @@
+body {
+    background-color: rgb(250, 251, 252);
+    margin: 0;
+    font-family: Helvetica;
+}
+
+#header {
+    text-align: center;
+    margin: 20px;
+    color:#666666;
+}
+
+#box {
+    text-align: center;
+}
+
+textarea {
+    font-family: monospace;
+    width: 50%;
+    height: 400px;
+    display: inline-block;
+    border-color: rgb(225, 225, 225);
+    transition-property: all;
+    transition-duration: 2s;
+}
+
+#errormessage {
+    font-family: monospace;
+    margin: 20px;
+    color: rgb(209, 49, 25);
+}
+
+.green {
+    background-color: rgb(230, 239, 194);;
+    border: 1px solid rgb(198, 216, 128);;
+    color: rgb(82, 146, 20);
+}
+
+.red {
+    background-color: rgb(251, 227, 228);;
+    border: 1px solid rgb(251, 194, 196);;
+    color: rgb(209, 49, 25);
+}
+
+.myButton {
+    width: 48%;
+    display: inline-block;
+	box-shadow:inset 0px 39px 0px -24px #ffffff;
+	background-color:#ffffff;
+	border-radius:4px;
+	border:1px solid #dcdcdc;
+	cursor:pointer;
+	color:#666666;
+	font-family:Helvetica;
+	font-size:15px;
+	padding:6px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.myButton:hover {
+	background-color:#f6f6f6;
+}
+.myButton:active {
+	top:1px;
+}
+
+#bottom {
+    color:rgb(225, 225, 225);
+    font-family: monospace;
+    font-size: 10px;
+    bottom: 10px;
+}

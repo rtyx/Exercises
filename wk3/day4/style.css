@@ -24,10 +24,17 @@ textarea {
     transition-duration: 2s;
 }
 
-#errormessage {
+#message {
     font-family: monospace;
     margin: 20px;
+}
+
+.errormessage {
     color: rgb(209, 49, 25);
+}
+
+.okmessage {
+    color: rgb(82, 146, 20);
 }
 
 .green {

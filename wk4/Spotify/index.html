@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <title>Spotisearch</title>
+    </head>
+
+    <body>
+        <div id="header">
+            <div id="title">Spotisearch</div>
+            <div id="searchbox">
+                <div id="wrapper">
+                    <input id="searchtext" autofocus="true" type="text"></input>
+                    <select>
+                        <option value="artist">Artist</option>
+                        <option value="album">Album</option>
+                    </select>
+                    <input id="submitbutton" class="button" type="submit" value="Go!"></input>
+                </div>
+            </div>
+            <div id="resultsbox">
+                <div id="displaying">
+                </div>
+                <div id="results">
+                </div>
+            </div>
+            <div id="moreresults">
+                <button id="more" class="button" value="More">More</button>
+            </div>
+        </div>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>

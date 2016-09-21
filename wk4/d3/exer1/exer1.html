@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <title>Wikiauthors</title>
+    </head>
+
+    <body>
+        <div id="header">
+            <div id="title">Authors</div>
+        </div>
+
+        <div id="resultsbox">
+
+            <script id="results" type="text/handlebars">
+                    {{#authors}}
+                    <div class="result">
+                        <div class="profpic" style="background-image: url('{{photo}}')"></div>
+                        <div class="bio">
+                            <h2 class="name">
+                                {{name}}
+                                ({{born}}&dagger;{{died}})
+                            <h2>
+                            <p>
+                                Author of titles such as: {{selectedWritings}}
+                                <br>
+                                <br>
+                                <em>{{quote}}</em>
+                            </p>
+                        </div>
+                    </div>
+                    {{/authors}}
+            </script>
+
+        </div>
+
+        <div id="moreresults">
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+    <title>Super Fun</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <script id="first" type="text/handlebars">
+    <strong>Hello {{name}}!</strong>
+    </script>
+
+    <script id="resultsHeading" type="text/handlebars">
+    <h2>Results for {{artist}}
+    </script>
+
+    <script id="results" type="text/handlebars">
+    {{> first}}
+    {{#albums}}
+    <p><em>{{name}}</em> ({{year}})
+    {{/albums}}
+    </script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

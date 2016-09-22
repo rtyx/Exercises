@@ -1,0 +1,108 @@
+img {
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-o-user-select: none;
+user-select: none;
+}
+
+body {
+    margin: 0;
+    background-color: white;
+    font-family: Arial;
+}
+
+#header {
+    background-color: #FF9900;
+    color: white;
+    height: 50px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+#box {
+    color: black;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#item {
+    margin: 25px;
+    height: 575px;
+    width: 950px;
+    background-color: #F7F7F7;
+    text-align: center;
+    position: relative;
+}
+
+h2 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#photobox {
+    height: 500px;
+    width: 900px;
+    position: relative;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.photograph {
+    height: 500px;
+    width: 900px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#beforebox {
+    position: absolute;
+    overflow: hidden;
+    z-index: 2;
+    height: 100%;
+    width: 50%;
+}
+
+#dragger {
+    position: absolute;
+    height: 100%;
+    width: 2px;
+    z-index: 3;
+    left: 50%;
+}
+
+#divider {
+    position: absolute;
+    opacity: 0.5;
+    height: 100%;
+    width: 100%;
+    background-color: #FF9900;
+    transition-property: opacity;
+    transition-duration: 1s;
+    z-index: 3;
+}
+
+#doorknob {
+    opacity: 0.1;
+    background-color: #FF9900;
+    border-radius: 30px;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition-property: opacity;
+    transition-duration: 1s;
+    z-index: 3;
+}

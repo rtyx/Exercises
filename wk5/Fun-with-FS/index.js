@@ -4,10 +4,18 @@ var mypath = __dirname + '/files';
 
 function listAll(path) {
     fs.readdir(path, function(err, data) {
+        if (err) {
+            console.log(err);
+            process.exit;
+        }
         console.log(path + "/ contains " + data);
         for (var i = 0; i < data.length; i++) {
             function hello(i) {
                 fs.stat(path + "/" + data[i], function(err, stats) {
+                    if (err) {
+                        console.log(err);
+                        process.exit;
+                    }
                     if (stats.isDirectory()) {
                         var newPath = path + "/" + data[i];
                         listAll(newPath);

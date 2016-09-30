@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <title>Gittycat</title>
+    </head>
+
+    <body>
+        <div id="header">
+            <div id="title">Gittycat</div>
+            <div id="searchbox">
+                <div id="wrapper">
+                    <input id="searchtext" autofocus="true" type="text"></input>
+                    <input id="submitbutton" class="button" type="submit" value="Go!"></input>
+                </div>
+            </div>
+            <div id="resultsbox">
+                <div id="displaying">
+                </div>
+                <div id="results">
+                    <div id="bio">
+                        <script id="hbar" type="text/handlebars">
+                            <div id="user" class="result">
+                                <img src="{{[0].owner.avatar_url}}"/>
+                                <div class="user">
+                                    <div class="title">
+                                        {{[0].owner.login}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="repos" class="result">
+                                <div class="title">
+                                    Repos
+                                </div>
+                                {{#each this}}
+                                    <div class="repo">{{name}}</div>
+                                {{/each}}
+                            </div>
+                        </script>
+
+                    </div>
+                    <script id="hbarcommits" type="text/handlebars">
+                        <div class="rep">
+                                <ul class="commits">
+                                    {{#each this}}
+                                        <li>
+                                            {{commit.message}}
+                                        </li>
+                                    {{/each}}
+                                </ul>
+                        </div>
+                    </script>
+                </div>
+            </div>
+            <div id="moreresults">
+                <button id="more" class="button" value="More">More</button>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>

@@ -1,4 +1,3 @@
-/* eslint-env node, jquery */
 
 const http = require('http');
 const chalk = require('chalk');
@@ -26,7 +25,9 @@ http.createServer(function(request, response) {
             response.end(responseBody);
         } else if (method == "POST") {
             response.writeHead(200, {'Content-Type': 'text/html'});
+            console.log(body);
             var postBody = querystring.parse(body);
+            console.log(postBody);
             var text = postBody.text;
             var color = postBody.color;
             console.log(chalk[color](text));

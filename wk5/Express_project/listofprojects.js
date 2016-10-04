@@ -1,13 +1,13 @@
 const fs = require('fs');
-const Handlebars = require('handlebars');
+const path = require('path');
 
 var mypath = __dirname;
-var template = Handlebars.compile(fs.readFileSync(mypath + "/templates/projects.handlebars", 'utf-8'));
 var links = [];
 
-function Link(name, href) {
+function Link(name, href, description) {
     this.name = name;
     this.href = href;
+    this.description = description;
 }
 
 function listAll(path) {
@@ -19,21 +19,18 @@ function listAll(path) {
             if (file == 'index.html') {
                 var thisfolder = path.substring(68);
                 var thishref = newPath.substring(67);
-                var newLink = new Link(thisfolder, thishref);
+                var thisdescription = path.substring(67) + '/description';
+                var newLink = new Link(thisfolder, thishref, thisdescription);
                 links.push(newLink);
             }
         }
     });
 }
 
-
 listAll(mypath);
-
-var JSONObject = {links};
-var html = template(JSONObject);
 
 console.log(links);
 
 module.exports = {
-    html
+    links
 };

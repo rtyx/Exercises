@@ -1,43 +1,57 @@
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser');
 const serveStatic = require('serve-static');
-const cookieParser = require('cookie-parser');
-const index = require('./templateindex.js');
+const listofprojects = require('./listofprojects.js');
+const exphbs  = require('express-handlebars');
+const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser());
+app.use(methodOverride());
 
-app.use(cookieParser());
-
-app.get('/cookies', function (req, res) {
-    res.sendFile('cookies.html', { root: __dirname });
-});
-
-app.post('/cookies', function (req, res) {
-    if (req.body.choice == 'Yeah') {
-        res.cookie('soul', 'lost', { expires: new Date(Date.now() + 60000), httpOnly: true });
-        res.redirect('/');
-    } else {
-        res.sendFile('nocookies.html', { root: __dirname });
-    }
-});
-
-app.get('*', function(req, res, next) {
-    if (req.cookies.soul == 'lost') {
-        console.log("Cookies: ", req.cookies);
-        next();
-    } else {
-        console.log("Cookies: ", req.cookies);
-        res.redirect(301, '/cookies');
-    }
-});
-
-app.get('/', function(req, res) {
-    res.send(index.html);
-});
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 
 app.use(serveStatic('projects'));
 
+app.get('/', function (req, res) {
+    var data = {
+        links: listofprojects.links
+    };
+    res.render('home', data);
+});
+
+app.get('/:projectName/description', function(req, res) {
+    // var description = require(__dirname)
+    var description = require(__dirname + '/projects' + req.url + 'description.json');
+    var data = {
+        links: listofprojects.links,
+        title: description.title,
+        description: description.description,
+        screenshot: req.url + 'screenshot.png',
+        href: '/' + req.params.projectName + '/'
+    };
+    res.render('ppage', data);
+});
+
+
+app.use(function(err, req, res, next){
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+    // console.log(req.status);
+    // if (req.status == 404) {
+    //     var data = {
+    //         links: listofprojects.links,
+    //         title: '404',
+    //         description: "That project doesn't exist... YET.",
+    //         screenshot: 'others/404.jpg',
+    //         href: '/'
+    //     };
+    //     res.render('ppage', data);
+    // } else {
+    //     next();
+    // }
+});
 
 
 app.listen(8080, function () {

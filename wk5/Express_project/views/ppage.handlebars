@@ -1,0 +1,24 @@
+<div id="sidebar">
+    <div id="sbarhead">
+        <h1> Projects </h1>
+    </div>
+    <div>
+        {{#each links}}
+        <div class="pbox"> <a href={{description}}> {{name}}</a> </div> ​
+        {{/each}}
+    </div>
+</div>
+
+<div id="projectbox">
+    <div id="suputamadre">
+        <h2>Project: {{title}} </h2>
+        <h3> Description: </h3>
+        <p> {{description}} </p>
+        <h3> Link: </h3>
+        <a href="{{href}}">{{title}}</a>
+    </div>
+
+    <div id="preview">
+        <img src="{{screenshot}}"/>
+    </div>
+</div>

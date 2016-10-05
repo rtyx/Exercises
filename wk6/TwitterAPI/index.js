@@ -6,14 +6,17 @@ const serveStatic = require('serve-static');
 const exphbs  = require('express-handlebars');
 var token;
 var tweets = [];
+var flag = 0;
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use(serveStatic('public'));
 
-function Tweet(text, link) {
+function Tweet(user, text, link, date) {
+    this.user = user;
     this.text = text;
     this.link = link;
+    this.date = date;
 }
 
 function getToken(userid, callback) {
@@ -47,10 +50,12 @@ function getToken(userid, callback) {
     req.end();
 }
 
-function getTweets(token, callback) {
+function getTweets(token, user, callback) {
+    flag += 1;
+    console.log(flag);
     var options = {
         host: 'api.twitter.com',
-        path: '/1.1/statuses/user_timeline.json?screen_name=elmundotoday&count=20',
+        path: "/1.1/statuses/user_timeline.json?screen_name=" + user + "&count=20",
         method: 'GET',
         headers: {
             'Authorization': 'Bearer ' + token,
@@ -71,12 +76,14 @@ function getTweets(token, callback) {
                     var n = result[i].text.search("https");
                     var text = result[i].text.slice(0,n);
                     var link = result[i].text.slice(n);
-                    var tweet = new Tweet(text,link);
+                    var date = result[i].created_at;
+                    var tweet = new Tweet(user,text,link,date);
                     tweets.push(tweet);
                 }
             }
-            console.log(tweets);
-            callback(tweets);
+            flag -= 1;
+            console.log(flag);
+            callback(flag);
         });
     });
     req.on('error', (e) => {
@@ -86,10 +93,44 @@ function getTweets(token, callback) {
     req.end();
 }
 
+var user1 = "elmundotoday";
+var user2 = "el_pais";
+var user3 = "elespanolcom";
+
 app.get('/', function (req,res) {
     getToken(user, function(token) {
-        getTweets(token, function(tweets) {
-            res.render('home', tweets);
+        getTweets(token, user1, function(flag) {
+            if (flag == 0) {
+                tweets.sort(function(a, b) {
+                    a = new Date(a.date);
+                    b = new Date(b.date);
+                    return a>b ? -1 : a<b ? 1 : 0;
+                });
+                console.log(tweets);
+                res.render('home', tweets);
+            }
+        });
+        getTweets(token, user2, function(flag) {
+            if (flag == 0) {
+                tweets.sort(function(a, b) {
+                    a = new Date(a.date);
+                    b = new Date(b.date);
+                    return a>b ? -1 : a<b ? 1 : 0;
+                });
+                console.log(tweets);
+                res.render('home', tweets);
+            }
+        });
+        getTweets(token, user3, function(flag) {
+            if (flag == 0) {
+                tweets.sort(function(a, b) {
+                    a = new Date(a.date);
+                    b = new Date(b.date);
+                    return a>b ? -1 : a<b ? 1 : 0;
+                });
+                console.log(tweets);
+                res.render('home', tweets);
+            }
         });
     });
 });

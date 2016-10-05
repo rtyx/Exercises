@@ -29,7 +29,7 @@ function listAll(path) {
 
 listAll(mypath);
 
-console.log(links);
+console.log({links});
 
 module.exports = {
     links

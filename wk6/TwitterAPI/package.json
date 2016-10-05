@@ -1,0 +1,21 @@
+{
+  "name": "twitterapi",
+  "version": "1.0.0",
+  "description": "Exciting El Mundo Today News ticker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cool",
+    "el",
+    "mundo",
+    "today"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0"
+  }
+}

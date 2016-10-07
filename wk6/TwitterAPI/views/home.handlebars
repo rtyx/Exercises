@@ -1,11 +1,10 @@
 <div id="bar">
     <div id="barhead">
-        <h2> ULTIMAS NOTICIAS </h2>
+        <h2> ÚLTIMAS NOTICIAS </h2>
     </div>
     <div id="main">
         <div id="container">
             {{#each .}}
-                <!-- class="pbox"> <a href={{entities.urls}}>  -->
                 <a href={{link}} class="list" >{{text}} ({{user}})</a>
             {{/each}}
         </div>

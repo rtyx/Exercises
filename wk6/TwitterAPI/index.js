@@ -1,34 +1,32 @@
 const express = require('express');
-const user = require("./script/user.json");
 const app = express();
+const chalk = require('chalk');
 const serveStatic = require('serve-static');
 const exphbs  = require('express-handlebars');
 const twitter = require('./script/twitter.js');
+const user = require("./script/user.json");
+const wiii = chalk.bold.green;
+const error = chalk.bold.red;
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use(serveStatic('public'));
 
-var user1 = "elmundotoday";
-// var user2 = "el_pais";
-// var user3 = "elespanolcom";
+var users = ["elmundotoday", "el_pais", "elespanolcom", "elmundoes"];
 
 app.get('/', function (req,res) {
-    twitter.getToken(user, function(token) {
-        console.log(token);
-        // twitter.getTweets(token, user1, function(tweets) {
-        //     res.render('home', tweets);
-        // });
+    twitter.getToken(user).then(function(token) {
+        twitter.getAllTweets(token, users).then(function(allTweets) {
+            twitter.orderTweets(allTweets).then(function(TweetsInOrder) {
+                console.log(wiii("DONE!"));
+                res.render('home', TweetsInOrder);
+            }).catch(function(reason) {
+                console.log(error(reason));
+            });
+        });
     });
 });
-//         twitter.getTweets(token, user1, function() {
-//                 twitter.orderTweets(tweets, function() {
-//                     res.render('home', tweets);
-//             });
-//         });
-//     });
-// });
 
 app.listen(8080, function () {
-    console.log('Listening on port 8080!');
+    console.log(chalk.blue('Listening on port 8080!'));
 });
